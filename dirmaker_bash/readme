@@ -1,0 +1,7 @@
+execute bash script with ``bash dirmaker.sh``
+cleanup with ``sh cleanup.sh``
+repouplate files with ``sh populate.sh``
+
+This bash was written to save me some time with creating and moving our compound objects into folders with similar names.
+
+Currently throwing an error, but it works fine. 
