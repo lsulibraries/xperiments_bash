@@ -1,0 +1,6 @@
+``sh populate.sh`` to gen test files
+``bash gig-subfolder.sh`` places any file with zip extension, not containing cpd in the filename and greater than the size variable into its own subfolder
+``sh cleanup.sh`` to rm test files
+
+BUG right now the conditional size is not working it puts all zips != *cpd* in subfolders... annoying
+also creates a file named according to size variable

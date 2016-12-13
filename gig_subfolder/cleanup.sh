@@ -1,3 +1,3 @@
 #!/bin/bash
-$(rm -Rf 4k-file)
-$(rm 4000)
+$(rm -Rf *file)
+$(rm 0k-file.zip)
