@@ -1,0 +1,42 @@
+The goal here is to format drush commands after running the neccessary directory scripts;
+
+I think that the more I consider the problems of differing OSes, Bash versions, and others it makes sense to use a python virtualenv;
+
+For now I'm going to use BASH bc it helps me learn new things. Python later.
+
+Our directory sturcture is as follows:
+
+owner-p555555coll55-filetype.zip for files < 999,999,999 bytes
+owner-p555555coll55-cpd/ all need unzipped and targeted by drush icbp
+owner-p555555coll55-filetype/ for simple collections > 999,999,999 bytes
+
+
+cpd directories operate on this model:
+
+drush -u 1 icbp --target=/tmp/{CPD-FOLDER} --namespace={owner-p555555coll55} --parent={owner-p555555coll55}:collection
+
+simple zips with no directory (other than /tmp/zipfile.zip)
+
+drush -u 1 ibsp --type=zip --scan_target=/tmp/{owner-p555555coll55-filetype.zip} --content_models=islandora:{pick_based_on_filetype} --namespace={owner-p555555coll55} --parent={owner-p555555coll55}:collection
+
+large simple collections are almost the same, with the exception of --type=directory vs --type=zip;
+
+drush -u 1 ibsp --type=directory --scan_target=/tmp/{owner-p555555coll55-filetype} --content_models=islandora:{pick_based_on_filetype} --namespace= --parent=:collection
+
+
+the content models we are dealing with are:
+
+islandora:
+	  sp_pdf
+	  sp-audioCmodel
+	  compoundCModel
+	  sp_large_image_cmodel
+	  sp_videoCModel
+these correspond to matching filenames as follows:
+pdf
+mp3
+cpd
+jp2
+mp4
+
+
