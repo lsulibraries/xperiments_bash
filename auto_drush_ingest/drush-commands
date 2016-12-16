@@ -1,0 +1,12 @@
+drush -u 1 ibsp --type=zip --scan_target=/tmp/nicholls-p15140coll51-mp4.zip --content_model=sp_videoCModel -namespace=nicholls-p15140coll51-mp4 --parent=nicholls-p15140coll51-mp4:collection
+drush -u 1 ibsp --type=zip --scan_target=/tmp/uno-p15140coll31-jp2.zip --content_model=sp_large_image_cmodel -namespace=uno-p15140coll31-jp2 --parent=uno-p15140coll31-jp2:collection
+drush -u 1 ibsp --type=zip --scan_target=/tmp/nicholls-p15140coll51-jp2.zip --content_model=sp_large_image_cmodel -namespace=nicholls-p15140coll51-jp2 --parent=nicholls-p15140coll51-jp2:collection
+drush -u 1 icbp --target=/tmp/uno-p16313coll86-cpd --namespace=uno-p16313coll86 --parent=uno-p16313coll86:collection
+drush -u 1 icbp --target=/tmp/uno-p120701coll13-cpd --namespace=uno-p120701coll13 --parent=uno-p120701coll13:collection
+drush -u 1 ibsp --type=zip --scan_target=/tmp/uno-p120701coll13-jp2.zip --content_model=sp_large_image_cmodel -namespace=uno-p120701coll13-jp2 --parent=uno-p120701coll13-jp2:collection
+drush -u 1 icbp --target=/tmp/uno-p16313coll72-cpd --namespace=uno-p16313coll72 --parent=uno-p16313coll72:collection
+drush -u 1 ibsp --type=zip --scan_target=/tmp/uno-p15140coll42-pdf.zip --content_model=sp_pdf -namespace=uno-p15140coll42-pdf --parent=uno-p15140coll42-pdf:collection
+drush -u 1 icbp --target=/tmp/nicholls-p15140coll51-cpd --namespace=nicholls-p15140coll51 --parent=nicholls-p15140coll51:collection
+drush -u 1 ibsp --type=zip --scan_target=/tmp/nicholls-p15140coll51-pdf.zip --content_model=sp_pdf -namespace=nicholls-p15140coll51-pdf --parent=nicholls-p15140coll51-pdf:collection
+drush -u 1 ibsp --type=zip --scan_target=/tmp/lsu-p123465coll89-pdf --content_model= -namespace=lsu-p123465coll89-pdf --parent=lsu-p123465coll89-pdf:collection
+drush -u 1 ibsp --type=directory --scan_target=/tmp/lsu-p123465coll89-pdf --content_model=sp_pdf -namespace=lsu-p123465coll89 --parent=lsu-p123465coll89:collection
