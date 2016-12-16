@@ -18,5 +18,9 @@ for line in $(cat input);do
 		ext=${name_ext: -3}
                 echo 'drush -u 1 ibsp --type=zip --scan_target=/tmp/'"$line"' --content_model='"${cmodels[$ext]}"' -namespace='"$namespace"' --parent='"$namespace"':collection' >> drush-commands
         fi
-
+	if [[ ${line} != *.zip  ]]; then
+		namespace=$(echo "${line:0:${#line}-4}")
+                ext=${line: -3}
+                echo 'drush -u 1 ibsp --type=directory --scan_target=/tmp/'"$line"' --content_model='"${cmodels[$ext]}"' -namespace='"$namespace"' --parent='"$namespace"':collection' >> drush-commands
+	fi
 done;
