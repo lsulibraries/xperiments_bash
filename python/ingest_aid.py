@@ -28,13 +28,30 @@ filelist=[i for i in os.listdir() if '.zip' in i]
 print(filelist)
 
 def large_zip_subdir(zip_list):
-	for line in zip_list:
-		if os.stat(line).st_size > 2450:
-			print('bigfile')
+ for line in zip_list:
+  if os.stat(line).st_size > 2450:
+   print('bigfile', line)
+   os.mkdir(line[:-4])
+   os.rename(line, line[:-4]+'/'+line)
 
 large_zip_subdir(filelist)
 	
+filelist=[i for i in os.listdir() if i != 'cleanup.sh' and i != 'ingest_aid.py']
+print(filelist)
+
 
 #drush commands have 3 forms, cpd-subfolder, simple.zip, >1gig-subfolder/ 
-#def drush_ingest_writer():
-	
+
+def drush_ingest_writer(zips_and_dirs):
+cmodels = {'pdf':'sp_pdf', 'jp2':'sp_large_image_cmodel', 'mp4':'sp_videoCModel', 'mp3':'sp-audoCmodel'}
+namespace=''
+name_ext=''
+ext=''
+ for line in zips_and_dirs:
+  if 'cpd' in line:
+   #create drush for cpd
+  if 'cpd' not in line and 'zip' in line:
+   #create drush for simple zip
+  if '.zip' not in line and 'cpd' not in line:
+   #create drush for >1 gig subfolder zip
+ 
