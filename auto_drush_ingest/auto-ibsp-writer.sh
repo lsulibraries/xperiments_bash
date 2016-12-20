@@ -13,7 +13,7 @@ for line in $(cat input);do
 		echo 'has cpd namespace:' ${namespace}
 		echo 'drush -u 1 icbp --target=/tmp/'"$namespace"'-cpd --namespace='"$namespace"' --parent='"$namespace"':collection' >> drush-commands
 	fi
-	if [[ ${line} != *cpd* ]]; then
+	if [[ ${line} != *cpd* && ${line} == *.zip  ]]; then
 		name_ext=$(echo ${line} |  sed 's/\.[^.]*$//' )
 		namespace=$(echo "${name_ext:0:${#name_ext}-4}")
 		echo 'simple collection, namespace:'
