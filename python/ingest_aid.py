@@ -9,12 +9,12 @@ import os
 #for cpd.zips they get moved into a folder: ie 'lsu1234coll1-cpd/lsu1234coll1-cpd.zip' 
 #.zips that are simple only (not containing *cpd* in name) and are > 1Gig in size, must also go in a subfolder. IE: 'loyno-morethan1Gigcoll2-mp3/loyno-morethan1Gigcoll2-mp3.zip'
 
-filelist=['uno-p15140coll1-cpd.zip','uno-p151234coll2-jp2.zip','lsu-1gig-mp3']
+filelist=['uno-p15140coll1-cpd.zip','uno-p151234coll2-jp2.zip','lsu-1gig-mp3.zip']
 
 def cpd_subdir(zip_list):
  for line in zip_list:
  	if 'cpd' in line:
- 		print line[:-4]
+ 		print(line[:-4])
  		#os.mkdir(line[:-4])
  		#os.mv(line, line[:-4])
 
@@ -23,9 +23,9 @@ def cpd_subdir(zip_list):
 
 #cpd_subdir(filelist)
 
-def large_zip_subdir():
+def large_zip_subdir(zip_list):
 	for line in zip_list:
-		if os.stat(line) > 4000:
+		if os.stat(line).st_size > 2450:
 			print('bigfile')
 
 large_zip_subdir(filelist)
