@@ -13,15 +13,15 @@ filelist=['uno-p15140coll1-cpd.zip','uno-p151234coll2-jp2.zip','lsu-1gig-mp3.zip
 
 def cpd_subdir(zip_list):
  for line in zip_list:
- 	if 'cpd' in line:
- 		print(line[:-4])
- 		#os.mkdir(line[:-4])
- 		#os.mv(line, line[:-4])
+  if 'cpd' in line:
+   print(line[:-4])
+   os.mkdir(line[:-4])
+   os.rename(line, line[:-4]+'/'+line)
 
 #with open('list','r',encoding='utf8') as f:
 #    filelist=[i for i in f.readlines()]
 
-#cpd_subdir(filelist)
+cpd_subdir(filelist)
 
 def large_zip_subdir(zip_list):
 	for line in zip_list:
