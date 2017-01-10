@@ -7,7 +7,7 @@ namespace=''
 name_ext=''
 ext=''
 
-for line in $(cat input);do
+for line in $(cat zips);do
 	if [[ ${line} =~ .*cpd.* ]]; then
 		namespace=$(echo ${line} |  sed 's/-cpd\.[^.]*$//' )
 		echo 'has cpd namespace:' ${namespace}
