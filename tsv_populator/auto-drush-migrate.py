@@ -9,20 +9,30 @@ with open('alias-names', 'r', encoding='utf-8') as f:
     csv_reader = csv.reader(f, delimiter='\t')
     at_dict = {i:j for i, j in csv_reader}
 
+#print(at_dict)
 
 namespace = ''
 alias = ''
 title = ''
 
 with open('input', 'r', encoding='utf-8') as f:
-    for line in f.readline():
-        print(line)
-        namespace = line[:-8]
+    for line in f:
+        namespace = line[:-9]
         print(namespace)
-        alias = re.search('/(-.*)/', namespace)
-        #alias = alias[-1:]
+        alias = re.search('(-.*)', namespace)
+        alias = alias.group(0)
+        alias = alias[1:]
         print(alias)
-        #at-dict:namespace
-        #write tsv to file
+        title = at_dict[alias]
+        print(title)
+        tsvname = namespace + '.tsv'
+        tsvcontents = namespace + '\t' + title
+        with open(tsvname, 'w') as f:
+            f.write(tsvcontents)
+        drushcommand = 'drush --user=admin cicfc --input=/vagrant/%s.tsv  --namespace=%s --parent=islandora:root\n'  %  (namespace, namespace)
+        with open('drush-coll-migrate', 'a') as f:
+             f.write(drushcommand) 
+        
+        #print(tsvcontents, file=tsvname)
         #write drush command to file.
   
