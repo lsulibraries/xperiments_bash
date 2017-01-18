@@ -3,10 +3,11 @@
 # the script writes a simple .tsv with 'alias => title' based on an input dictionary of alias title associations
 # the script then writes a drush command populated with namespace, and the .tsv file as input.
 import csv
+import re
 
-with open('alias-title', 'r', encoding='utf-8') as f:
+with open('alias-names', 'r', encoding='utf-8') as f:
     csv_reader = csv.reader(f, delimiter='\t')
-    at-dict = {i:j for i, j in csv_reader}
+    at_dict = {i:j for i, j in csv_reader}
 
 
 namespace = ''
@@ -15,9 +16,13 @@ title = ''
 
 with open('input', 'r', encoding='utf-8') as f:
     for line in f.readline():
+        print(line)
         namespace = line[:-8]
-	alias = namespace[-:]
-	#at-dict:namespace
-	#write tsv to file
-	#write drush command to file.
+        print(namespace)
+        alias = re.search('/(-.*)/', namespace)
+        #alias = alias[-1:]
+        print(alias)
+        #at-dict:namespace
+        #write tsv to file
+        #write drush command to file.
   
