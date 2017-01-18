@@ -1,23 +1,5 @@
 #!/bin/bash
-declare -A=( ['p15140coll31']='Judge John Minor Wisdom Collection' ['p16313coll86']='Ex Parte Plessy (Plessy v. Ferguson)' ['p120701coll13']='Louisiana Hurricane Resources' ['p16313coll72']='Orleans Parish School Board Meeting Minutes -- Indexes' ['p15140coll42']='Marcus Christian Collection' ['p15140coll51']='Veterans of Southeast Louisiana' )
-
-uno-p15140coll31-jp2.zip
-uno-p16313coll86-cpd.zip
-uno-p120701coll13-cpd.zip
-uno-p16313coll72-cpd.zip
-uno-p15140coll42-pdf.zip
-nicholls-p15140coll51-cpd.zip
-
-
-Judge John Minor Wisdom Collection
-Ex Parte Plessy (Plessy v. Ferguson)
-Louisiana Hurricane Resources
-Orleans Parish School Board Meeting Minutes -- Indexes
-Marcus Christian Collection
-Veterans of Southeast Louisiana
-
-
-
+declare -A aliastitle=( ['p15140coll31']='Judge John Minor Wisdom Collection' ['p16313coll86']='Ex Parte Plessy (Plessy v. Ferguson)' ['p120701coll13']='Louisiana Hurricane Resources' ['p16313coll72']='Orleans Parish School Board Meeting Minutes -- Indexes' ['p15140coll42']='Marcus Christian Collection' ['p15140coll51']='Veterans of Southeast Louisiana')
 namespace=''
 alias=''
 title='' 
