@@ -3,8 +3,6 @@ declare -A aliastitle=( ['p15140coll31']='Judge John Minor Wisdom Collection' ['
 namespace=''
 alias=''
 title='' 
-#best way to associate alias with title?
-#for <alias> in xml; key:value  alias:title
 for line in $(cat input);do
 #always strip off last 8 characters, ie -cpd.zip or -jp2.zip
   namespace=$(echo "${line:0:${#line}-8}")
