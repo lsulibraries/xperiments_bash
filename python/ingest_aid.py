@@ -1,6 +1,6 @@
-#ingest_aid for moving cpd.zips into cpd folders, and > 1Gig .zips into subfolders, automatic population of 'drush-commands' with namespace, target files, and and contentmodels
+#ingest_aid for moving cpd.zips and >1Gig .zips into subfolders, automatic population of 'drush-commands' with namespace, target files, and and contentmodels
 # designed to remove human error, and save time ingesting into islandora, via drush.
-
+#new functionality within tsv_populator creates drush command for cicfc drush ingest of collection containers.
 import os
 
 #input = os.read()
@@ -47,14 +47,15 @@ cmodels = {'pdf':'sp_pdf', 'jp2':'sp_large_image_cmodel', 'mp4':'sp_videoCModel'
 namespace=''
 name_ext=''
 ext=''
- for line in zips_and_dirs:
-  if 'cpd' in line:
-    #create drush for cpd
-    drush = 'drush -u 1 icbp --target=/tmp/{}-cpd --namespace={} --parent={}:collection' namespace
-  if 'cpd' not in line and 'zip' in line:
-    #create drush for simple zip
-    drush = 'drush -u 1 ibsp --type=zip --scan_target=/tmp/%s --content_models=islandora:%s --namespace=%s --parent=%s:collection' % (line, cmodel[ext], namespace, namespace)
+  for line in zips_and_dirs:
+    if 'cpd' in line:
+      #create drush for cpd
+      drush = 'drush -u 1 icbp --target=/tmp/{}-cpd --namespace={} --parent={}:collection' namespace
+    if 'cpd' not in line and 'zip' in line:
+      #create drush for simple zip
+      drush = 'drush -u 1 ibsp --type=zip --scan_target=/tmp/%s --content_models=islandora:%s --namespace=%s --parent=%s:collection' % (line, cmodel[ext], namespace, namespace)
 
-  if '.zip' not in line and 'cpd' not in line:
-    #create drush for >1 gig subfolder zip
-    drush = 'drush -u 1 ibsp --type=directory --scan_target=/tmp/'"$line"' --content_models=islandora:'"${cmodels[$ext]}"' --namespace='"$namespace"' --parent='"$namespace"':collection'  % (line, cmodel[ext], namespace, namespace)
+    if '.zip' not in line and 'cpd' not in line:
+      #create drush for >1 gig subfolder zip
+      drush = 'drush -u 1 ibsp --type=directory --scan_target=/tmp/'"$line"' --content_models=islandora:'"${cmodels[$ext]}"' --namespace='"$namespace"' --parent='"$namespace"':collection'  % (line, cmodel[ext], namespace, namespace)
+    open('drush-commands', 'a')
