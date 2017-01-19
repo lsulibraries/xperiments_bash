@@ -49,9 +49,12 @@ name_ext=''
 ext=''
  for line in zips_and_dirs:
   if 'cpd' in line:
-   #create drush for cpd
+    #create drush for cpd
+    drush = 'drush -u 1 icbp --target=/tmp/{}-cpd --namespace={} --parent={}:collection' namespace
   if 'cpd' not in line and 'zip' in line:
-   #create drush for simple zip
+    #create drush for simple zip
+    drush = 'drush -u 1 ibsp --type=zip --scan_target=/tmp/%s --content_models=islandora:%s --namespace=%s --parent=%s:collection' % (line, cmodel[ext], namespace, namespace)
+
   if '.zip' not in line and 'cpd' not in line:
-   #create drush for >1 gig subfolder zip
- 
+    #create drush for >1 gig subfolder zip
+    drush = 'drush -u 1 ibsp --type=directory --scan_target=/tmp/'"$line"' --content_models=islandora:'"${cmodels[$ext]}"' --namespace='"$namespace"' --parent='"$namespace"':collection'  % (line, cmodel[ext], namespace, namespace)
