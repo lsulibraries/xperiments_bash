@@ -1,5 +1,14 @@
 #!/bin/bash
-declare -A aliastitle=( ['p15140coll31']='Judge John Minor Wisdom Collection' ['p16313coll86']='Ex Parte Plessy (Plessy v. Ferguson)' ['p120701coll13']='Louisiana Hurricane Resources' ['p16313coll72']='Orleans Parish School Board Meeting Minutes -- Indexes' ['p15140coll42']='Marcus Christian Collection' ['p15140coll51']='Veterans of Southeast Louisiana')
+declare -A ali_title
+
+#for line in $(cat 'alias-names'); do
+while read -r ali title;do
+  echo $ali ' => ' $title
+  ali_title+=( [$ali]=$title )
+done < alias-names
+
+echo $ali_title
+
 namespace=''
 alias=''
 title='' 
@@ -11,7 +20,7 @@ for line in $(cat input);do
   echo 'namespace=' ${namespace}
   echo 'drush --user=admin cicfc --input=/vagrant/'"$namespace"'.tsv  --namespace='"$namespace"' --parent=islandora:root' >> drush-coll-migrate
   echo "${aliastitle[$alias]}"
-  echo -e $namespace "\t"  "${aliastitle[$alias]}" "\t"  > ${namespace}.tsv
+  echo -e $namespace "\t"  "${ali_title[$alias]}" "\t"  > ${namespace}.tsv
 done;
 
 
