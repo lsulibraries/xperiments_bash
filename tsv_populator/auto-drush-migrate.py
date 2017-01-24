@@ -29,7 +29,7 @@ with open('input', 'r', encoding='utf-8') as f:
         tsvcontents = namespace + '\t' + title
         with open(tsvname, 'w') as f:
             f.write(tsvcontents)
-        drushcommand = 'drush --user=admin cicfc --input=/vagrant/%s.tsv  --namespace=%s --parent=islandora:root\n'  %  (namespace, namespace)
+        drushcommand = 'drush --user=admin cicfc --input=/vagrant/%s.tsv  --namespace=%s:collection --parent=islandora:root\n'  %  (namespace, namespace)
         with open('drush-coll-migrate', 'a') as f:
              f.write(drushcommand) 
         
