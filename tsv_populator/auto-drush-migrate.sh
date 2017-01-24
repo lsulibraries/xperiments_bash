@@ -18,7 +18,7 @@ for line in $(cat input);do
   alias=$(echo ${namespace} | sed 's/^[^-]*//' | sed 's/\-//')
   echo 'alias=' ${alias}
   echo 'namespace=' ${namespace}
-  echo 'drush --user=admin cicfc --input=/vagrant/'"$namespace"'.tsv  --namespace='"$namespace"' --parent=islandora:root' >> drush-coll-migrate
+  echo 'drush --user=admin cicfc --input=/vagrant/'"$namespace"'.tsv  --namespace='"$namespace"':collection --parent=islandora:root' >> drush-coll-migrate
   echo "${aliastitle[$alias]}"
   echo -e $namespace "\t"  "${ali_title[$alias]}" "\t"  > ${namespace}.tsv
 done;
