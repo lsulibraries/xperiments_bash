@@ -1,6 +1,5 @@
 #!/bin/bash
-
-for OUTPUT in  $(ls *.zip);
+for OUTPUT in $(ls *.zip);
 do
 	if [[ ${OUTPUT} =~ .*cpd.* ]]; then
 		$(mkdir $(echo ${OUTPUT} | sed 's/\.[^.]*$//' ))
