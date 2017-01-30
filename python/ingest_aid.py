@@ -35,7 +35,7 @@ def drush_ingest_writer():
     filelist=[os.path.abspath(i) for i in os.listdir() if i not in ('cleanup.sh', 'drush-commands', 'ingest_aid.py')]
     #print('current state of zip paths and dirs: {}'.format(filelist))
 
-    cmodels = {'pdf':'sp_pdf', 'jp2':'sp_large_image_cmodel', 'mp4':'sp_videoCModel', 'mp3':'sp-audoCmodel'}
+    cmodels = {'pdf':'sp_pdf', 'jp2':'sp_large_image_cmodel', 'mp4':'sp_videoCModel', 'mp3':'sp-audioCModel'}
     for line in filelist:
         _, namespace_ext = os.path.split(line)
         print(_, namespace_ext)
