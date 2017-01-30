@@ -21,7 +21,7 @@ namespace = ''
 alias = ''
 title = ''
 
-with open('input', 'r', encoding='utf-8') as f:
+with open('zips', 'r', encoding='utf-8') as f:
     for line in f:
         namespace = line[:-9]
         print(line + 'namespace = {}'.format(namespace))
@@ -36,7 +36,7 @@ with open('input', 'r', encoding='utf-8') as f:
         with open(tsvname, 'w') as f:
             f.write(tsvcontents)
         print('tsv content = {}'.format(tsvcontents))
-        drushcommand = 'drush --user=admin cicfc --input=/vagrant/{0}.tsv  --namespace={0}:collection --parent=islandora:root\n'.format(namespace)
+        drushcommand = 'drush --user=admin cicfc --input=/tmp/{0}.tsv  --namespace={0}:collection --parent=islandora:root\n'.format(namespace)
         with open('drush-coll-migrate', 'a') as f:
              f.write(drushcommand) 
         print('drush command = {}'.format(drushcommand))
