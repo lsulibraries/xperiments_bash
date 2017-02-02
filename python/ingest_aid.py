@@ -32,10 +32,10 @@ cpd_gig_dirmaking()
 #drush commands have 3 forms, cpd-subfolder, simple.zip, >1gig-subfolder/ 
 
 def drush_ingest_writer():
-    filelist=[os.path.abspath(i) for i in os.listdir() if i not in ('cleanup.sh', 'drush-commands', 'ingest_aid.py')]
+    filelist=[os.path.abspath(i) for i in os.listdir() if i not in ('cleanup.sh', 'drush-commands', 'ingest_aid.py', 'zips')]
     #print('current state of zip paths and dirs: {}'.format(filelist))
 
-    cmodels = {'pdf':'sp_pdf', 'jp2':'sp_large_image_cmodel', 'mp4':'sp_videoCModel', 'mp3':'sp-audoCModel'}
+    cmodels = {'pdf':'sp_pdf', 'jp2':'sp_large_image_cmodel', 'mp4':'sp_videoCModel', 'mp3':'sp-audioCModel'}
     for line in filelist:
         _, namespace_ext = os.path.split(line)
         print(_, namespace_ext)

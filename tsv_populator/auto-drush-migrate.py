@@ -11,7 +11,7 @@
 import csv
 import re
 
-with open('alias-names', 'r', encoding='utf-8') as f:
+with open('/opt/xperiments_bash/tsv_populator/alias-names', 'r', encoding='utf-8') as f:
     csv_reader = csv.reader(f, delimiter='\t')
     at_dict = {i:j for i, j in csv_reader}
 
