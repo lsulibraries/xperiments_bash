@@ -5,7 +5,6 @@
 # writes a drush command populated with namespace, and the .tsv file as input.
 #------------------------------------------------------------TO DO---------------------------------------------------------------------
 # to add content type flag for drush command, could add all types for default. or could crossref a filetypes => content-model dictionary
-# check whether ldl.lib.lsu.edu/islandora/object/{namespace}:collection exists yet (curl)
 # incorporate into ingest_aid.py
 import csv
 import re
@@ -14,9 +13,6 @@ import requests
 with open('alias-names', 'r', encoding='utf-8') as f:
     csv_reader = csv.reader(f, delimiter='\t')
     at_dict = {i:j for i, j in csv_reader}
-
-#print(at_dict)
-
 
 prefix_url = 'http://ldl.lib.lsu.edu/islandora/object/'
 check_dup = []
@@ -32,7 +28,6 @@ with open('input', 'r', encoding='utf-8') as f:
         request = requests.get(coll_url)
         if request.status_code == 200:
             print('collection already exists')
-            #how to skip the line if it already exists
         else:
             if namespace not in check_dup:
                 check_dup.append(namespace)
