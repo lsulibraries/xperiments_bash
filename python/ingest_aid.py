@@ -29,10 +29,9 @@ def cpd_gig_dirmaking():
 
 cpd_gig_dirmaking()
 
-#drush commands have 3 forms, cpd-subfolder, simple.zip, >1gig-subfolder/ 
 
 def drush_ingest_writer():
-    filelist=[os.path.abspath(i) for i in os.listdir() if i not in ('cleanup.sh', 'drush-commands', 'ingest_aid.py', 'zips')]
+    filelist=[os.path.abspath(i) for i in os.listdir() if i not in ('cleanup.sh', 'drush-commands', 'ingest_aid.py', 'zips','*.tsv','drush-coll-migrate')]
     #print('current state of zip paths and dirs: {}'.format(filelist))
 
     cmodels = {'pdf':'sp_pdf', 'jp2':'sp_large_image_cmodel', 'mp4':'sp_videoCModel', 'mp3':'sp-audioCModel'}
@@ -40,10 +39,10 @@ def drush_ingest_writer():
         _, namespace_ext = os.path.split(line)
         print(_, namespace_ext)
         inst, ali, ext = namespace_ext.split('-')
-        namespace = '{}-{}'.format(inst, ali)
+        namespace = '{0}-{1}'.format(inst, ali)
         print(namespace)
         if ext == 'cpd':
-            drush = 'drush -u 1 icbp --target={0} --namespace={1} --parent={1}:collection'.format(line, namespace)
+            drush = 'drush -u 1 icbp --src={0} --namespace={1} --parent={1}:collection'.format(line, namespace)
         elif 'zip' in ext:
             ext, z  = ext.split('.')
             drush = 'drush -u 1 ibsp --type=zip --scan_target={0} --content_models=islandora:{1} --namespace={2} --parent={2}:collection'.format(line, cmodels[ext], namespace)

@@ -10,11 +10,11 @@ import csv
 import re
 import requests
 
-with open('/opt/xperiments_bash/alias-names', 'r', encoding='utf-8') as f:
+with open('/opt/xperiments_bash/tsv_populator/alias-names', 'r', encoding='utf-8') as f:
     csv_reader = csv.reader(f, delimiter='\t')
     at_dict = {i:j for i, j in csv_reader}
 
-prefix_url = 'http://ldl.lib.lsu.edu/islandora/object/'
+prefix_url = 'http://localhost/islandora/object/'
 check_dup = []
 namespace = ''
 alias = ''
