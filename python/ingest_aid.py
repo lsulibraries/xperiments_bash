@@ -43,12 +43,12 @@ def drush_ingest_writer():
         namespace = '{}-{}'.format(inst, ali)
         print(namespace)
         if ext == 'cpd':
-            drush = 'drush -u 1 icbp --src={0} --namespace={1} --parent={1}:collection'.format(line, namespace)
+            drush = 'drush --user=admin icbp --src={0} --namespace={1} --parent={1}:collection'.format(line, namespace)
         elif 'zip' in ext:
             ext, z  = ext.split('.')
-            drush = 'drush -u 1 ibsp --type=zip --src={0} --content_models=islandora:{1} --namespace={2} --parent={2}:collection'.format(line, cmodels[ext], namespace)
+            drush = 'drush --user=admin ibsp --type=zip --src={0} --content_models=islandora:{1} --namespace={2} --parent={2}:collection'.format(line, cmodels[ext], namespace)
         else:
-            drush = 'drush -u 1 ibsp --type=directory --src={0} --content_models=islandora:{1} --namespace={2} --parent={2}:collection'.format(line, cmodels[ext], namespace)
+            drush = 'drush --user=admin ibsp --type=directory --src={0} --content_models=islandora:{1} --namespace={2} --parent={2}:collection'.format(line, cmodels[ext], namespace)
         with open('drush-commands', 'a') as file:
             file.write(drush+'\n')
 
