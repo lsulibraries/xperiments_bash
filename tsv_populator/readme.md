@@ -13,4 +13,7 @@ writes a list your sipfiles to the input file, which is used to feed arguments t
 
 `python3 auto_drush_migrate.py`
 
-check the contents of migrate_coll file
+check the contents of drush-coll-migrate file
+it should have as many lines as you have zip files.
+
+
