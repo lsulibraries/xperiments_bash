@@ -21,7 +21,7 @@ def cpd_gig_dirmaking():
             print('cpd file : {}'.format(filename))
             os.makedirs(filename, exist_ok=True)
             shutil.move(line, filename + '/')
-        elif os.stat(line).st_size > 9999:
+        elif os.stat(line).st_size > 999999999:
             print('bigfile in directory: {}'.format(line))
             filename, ext = os.path.splitext(line)
             os.makedirs(filename, exist_ok=True)
