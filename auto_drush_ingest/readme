@@ -21,7 +21,7 @@ drush -u 1 ibsp --type=zip --scan_target=/tmp/{owner-p555555coll55-filetype.zip}
 
 large simple collections are almost the same, with the exception of --type=directory vs --type=zip;
 
-drush -u 1 ibsp --type=directory --scan_target=/tmp/{owner-p555555coll55-filetype} --content_models=islandora:{pick_based_on_filetype} --namespace= --parent=:collection
+drush -u 1 ibsp --type=directory --scan_target=/tmp/{owner-p555555coll55-filetype} --content_models=islandora:{pick_based_on_filetype} --namespace={owner-p555555coll55} --parent={owner-p555555coll55}:collection
 
 
 the content models we are dealing with are:
