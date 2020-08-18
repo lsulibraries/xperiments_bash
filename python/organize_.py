@@ -31,12 +31,16 @@ def organize_cpd_structure():
     for line in filelist:
         #move the children to their directory and rename them
         if '_' in line:
-            #Changed this condition from '_0' to '_' to account for '*_Envelope'
+            #Changed this condition from '_0' to '_' to account for '*_Envelope' 
+            #works but currently is renaming Envelope the wrong way, also envelopes need their own folders...
             directory = line.split('_')
             objdir = '{}/'.format(directory[0])
             subfolder = directory[1]
             subfolder = subfolder.split('.')
             subdir = objdir + subfolder[0]
+            if 'Envelope' in directory[0]:
+                os.rename(line, 'MODS.xml')
+                line = 'MODS.xml'
             if '.xml' in line:
                 os.rename(line, 'MODS.xml')
                 line = 'MODS.xml'
