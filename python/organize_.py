@@ -6,21 +6,20 @@ import os, shutil
 
 #If I'm using underscores to split strings and create directories, I need to not use them in my nameing convention
 
-output_dir = 'output'
-os.mkdirs(output, exist_ok=True)
-
 def organize_cpd_structure():
     filelist = [os.path.abspath(i) for i in os.listdir()]
-    print(filelist)
+    #os.path.abspath(i) is for this file, ie ~/Desktop/Source
+    #print(filelist)
     for line in filelist:
         if '_' not in line:
-            #print('{}'.format(line))
-
+            print('{}'.format(line))
             filename, ext = os.path.splitext(line)
             os.makedirs(filename, exist_ok=True)
     for line in filelist:
-        #print(line)
+        #create directories for every child
         if ('_0') in line:
+            #creates a directory for each object with children
+            #main objects with '*_999' will always have children
             directory = line.split('_')
             objdir = '{}/'.format(directory[0])
             print(objdir)
@@ -30,7 +29,9 @@ def organize_cpd_structure():
             print(subdir)
             os.makedirs(subdir, exist_ok=True)
     for line in filelist:
-        if '_0' in line:
+        #move the children to their directory and rename them
+        if '_' in line:
+            #Changed this condition from '_0' to '_' to account for '*_Envelope'
             directory = line.split('_')
             objdir = '{}/'.format(directory[0])
             subfolder = directory[1]
@@ -45,6 +46,7 @@ def organize_cpd_structure():
             shutil.move(line, subdir)
     filelist = [os.path.abspath(i) for i in os.listdir()]
     for line in filelist:
+        #move the parent metadata into the appropriate folder
         if '.xml' in line:
             place = '{}/'.format(line[:-4])
             os.rename(line, 'MODS.xml')
