@@ -1,17 +1,21 @@
 import os, shutil
 
 
+#add exception for '-3', '_Envelope' 
+
 
 def organize_cpd_structure():
     filelist = [os.path.abspath(i) for i in os.listdir()]
+    print(filelist)
     for line in filelist:
         if '_' not in line:
-            print('{}'.format(line))
+            #print('{}'.format(line))
 
             filename, ext = os.path.splitext(line)
             os.makedirs(filename, exist_ok=True)
     for line in filelist:
-        if '_0' in line:
+        #print(line)
+        if ('_0') in line:
             directory = line.split('_')
             objdir = '{}/'.format(directory[0])
             print(objdir)
@@ -31,8 +35,8 @@ def organize_cpd_structure():
                 os.rename(line, 'MODS.xml')
                 line = 'MODS.xml'
             if '.jp2' in line:
-                os.rename(line, 'OBJ.xml')
-                line = 'OBJ.xml'
+                os.rename(line, 'OBJ.jp2')
+                line = 'OBJ.jp2'
             shutil.move(line, subdir)
     filelist = [os.path.abspath(i) for i in os.listdir()]
     for line in filelist:
