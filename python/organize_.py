@@ -2,7 +2,12 @@ import os, shutil
 
 
 #add exception for '-3', '_Envelope' 
+# I'm using some lazy directory creating methods. I think I should keep it to the current folder.
 
+#If I'm using underscores to split strings and create directories, I need to not use them in my nameing convention
+
+output_dir = 'output'
+os.mkdirs(output, exist_ok=True)
 
 def organize_cpd_structure():
     filelist = [os.path.abspath(i) for i in os.listdir()]
@@ -43,7 +48,7 @@ def organize_cpd_structure():
         if '.xml' in line:
             place = '{}/'.format(line[:-4])
             os.rename(line, 'MODS.xml')
-            shutil.move('MODS.xml', place)
+            shuti.move('MODS.xml', place)
  
 
 organize_cpd_structure()
