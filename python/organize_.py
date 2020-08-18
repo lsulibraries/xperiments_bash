@@ -50,7 +50,7 @@ def organize_cpd_structure():
         if '.xml' in line:
             place = '{}/'.format(line[:-4])
             os.rename(line, 'MODS.xml')
-            shuti.move('MODS.xml', place)
+            shutil.move('MODS.xml', place)
  
 
 organize_cpd_structure()
