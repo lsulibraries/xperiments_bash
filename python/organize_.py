@@ -11,22 +11,24 @@ def organize_cpd_structure():
     #os.path.abspath(i) is for this file, ie ~/Desktop/Source
     #print(filelist)
     for line in filelist:
+        #mkdir for every parent object, should always be the first half of *_*.whatever
         if '_' not in line:
             print('{}'.format(line))
             filename, ext = os.path.splitext(line)
             os.makedirs(filename, exist_ok=True)
     for line in filelist:
         #create directories for every child
-        if ('_0') or ('_E') in line:
-            #creates a directory for each object with children
+        if ('_') in line:
+            #creates a directory for each child object
             #main objects with '*_999' will always have children
             directory = line.split('_')
+            print(directory)
             objdir = '{}/'.format(directory[0])
-            print(objdir)
+            #print(objdir)
             subfolder = directory[1]
             subfolder = subfolder.split('.')
             subdir = objdir + subfolder[0]
-            print(subdir)
+            #print(subdir)
             os.makedirs(subdir, exist_ok=True)
     for line in filelist:
         #move the children to their directory and rename them
