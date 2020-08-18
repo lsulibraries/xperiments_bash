@@ -17,7 +17,7 @@ def organize_cpd_structure():
             os.makedirs(filename, exist_ok=True)
     for line in filelist:
         #create directories for every child
-        if ('_0') in line:
+        if ('_0') or ('_E') in line:
             #creates a directory for each object with children
             #main objects with '*_999' will always have children
             directory = line.split('_')
