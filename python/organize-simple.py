@@ -18,17 +18,23 @@ def organize_cpd_structure():
         dir_path = xml[:-4]
         print(dir_path)
         os.makedirs(dir_path, exist_ok=True)
-        shutil.move(xml, dir_path)
+        os.rename(xml, '{}/MODS.xml'.format(dir_path))
         others_r = glob.glob('{}r.*'.format(dir_path))
         others_v = glob.glob('{}v.*'.format(dir_path))
         os.makedirs('{}/r'.format(dir_path))
         os.makedirs('{}/v'.format(dir_path))
         for file in others_r:
-            print(file)
-            shutil.move(file, '{}/r'.format(dir_path))
+            ext = file[-4:]
+            if ext == '.jp2':
+                os.rename(file, '{}/r/OBJ.jp2'.format(dir_path))
+            else:
+                os.rename(file, '{}/r/MODS.xml'.format(dir_path))
         for file in others_v:
             print(file)
-            shutil.move(file, '{}/v'.format(dir_path))
-
+            ext = file[-4:]
+            if ext == '.jp2':
+                os.rename(file, '{}/v/OBJ.jp2'.format(dir_path))
+            else:
+                os.rename(file, '{}/v/MODS.xml'.format(dir_path))
 
 organize_cpd_structure()
